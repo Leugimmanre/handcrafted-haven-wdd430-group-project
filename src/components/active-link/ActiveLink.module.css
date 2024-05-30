@@ -1,0 +1,7 @@
+.link {
+    @apply text-xl font-bold p-2 hover:text-amber-800 rounded-md transition-all;
+}
+
+.active-link {
+    @apply text-blue-500
+}
