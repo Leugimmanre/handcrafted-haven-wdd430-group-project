@@ -2,7 +2,7 @@
 
 import { Artisan, Category, Product } from "@prisma/client";
 import { formatCurrency, getImagePath } from "../../utils/index";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import AddProductButtonDetail from "./AddProductButtonDetail";
 
 type ProductDetailsProps = {

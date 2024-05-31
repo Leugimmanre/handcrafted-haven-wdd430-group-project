@@ -52,7 +52,7 @@ export default function OrderSummary() {
       ) : (
         <div className="mt-5">
           {order.map((item) => (
-            <ProductDetails key={item.id} item={item} />
+            <ProductDetails key={item.id} item={item}/>
           ))}
           <p className="text-2xl mt-20 text-center">
             Total to pay: {""}
@@ -63,7 +63,7 @@ export default function OrderSummary() {
             <input
               type="text"
               placeholder="Write your full name"
-              className="bg-white border border-gray-100 py-2 w-full"
+              className="bg-white border border-gray-100 py-2 w-full mx-2"
               name="name"
             />
             <input

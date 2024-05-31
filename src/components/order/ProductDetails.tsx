@@ -17,7 +17,7 @@ export default function ProductDetails({ item }: ProductDetailsProps) {
   const removeItem = useStore((state) => state.removeItem);
   const disableDecreaseButton = useMemo(() => item.quantity === MIN_ITEMS, [item]);
   const disableIncreaseButton = useMemo(() => item.quantity === MAX_ITEMS, [item]);
-  
+
   return (
     <div className="shadow space-y-1 p-4 bg-white  border-t border-gray-200 ">
       <div className="space-y-4">

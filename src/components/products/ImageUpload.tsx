@@ -1,7 +1,7 @@
 "use client"
 import { getImagePath } from '@/utils'
 import { CldUploadWidget } from 'next-cloudinary'
-import Image from 'next/image'
+import Image from "next/legacy/image"
 import { useState } from 'react'
 import { TbPhotoPlus } from 'react-icons/tb'
 

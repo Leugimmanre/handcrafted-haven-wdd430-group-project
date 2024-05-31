@@ -1,7 +1,7 @@
 import { formatCurrency, getImagePath } from "@/utils";
 import Link from "next/link";
 import { ProductWithCategory } from "@/app/admin/products/page";
-import Image from "next/image";
+import Image from "next/legacy/image";
 
 
 type ProductTableProps = {
