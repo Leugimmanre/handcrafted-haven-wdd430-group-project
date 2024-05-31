@@ -66,9 +66,6 @@ export default async function SearchPage({
         <Heading>Searched Product: {searchParams.search}</Heading>
         <ProductSearchFormUser />
       </div>
-      <div className="flex justify-center p-10">
-        <GoBackButton />
-      </div>
       <div className="flex justify-center items-center">
         {products.length ? (
           <UserProductTable products={products} />

@@ -4,8 +4,8 @@ export const MainMenu = () => {
   const navItems = [
     { path: "/", text: "Home" },
     { path: "/contact", text: "Contact" },
-    // { path: "/order/ceramics_and_pottery", text: "Marketplace" },
     { path: "/user/login", text: "Login" },
+    { path: "/user/register", text: "Register"},
   ];
 
   return (

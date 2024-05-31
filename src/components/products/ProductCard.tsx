@@ -15,12 +15,12 @@ export default function ProductCard({ product }: ProductCardProps) {
       <Link href={`/products/${product.id}/details`}>
         <div className="relative w-full h-96">
           <Image
+            src={imagePath}
+            alt={`${product.name} product image`}
             width={400}
             height={500}
             layout="responsive"
             objectFit="cover"
-            src={imagePath}
-            alt={`${product.name} product image`}
           />
         </div>
       </Link>

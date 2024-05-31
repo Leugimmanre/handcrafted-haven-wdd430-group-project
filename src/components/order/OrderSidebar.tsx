@@ -13,7 +13,7 @@ export default async function OrderSidebar() {
   return (
     <aside className="md:w-72 md:h-screen bg-white">
       <nav className="">
-        <p className="ml-2 text-lg p-2">{<Session/>}</p>
+        <div className="ml-2 text-lg p-2">{<Session/>}</div>
         {categories.map((category) => (
           <CategoryIcon key={category.id} category={category} />
         ))}

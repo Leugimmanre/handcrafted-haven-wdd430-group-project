@@ -65,10 +65,10 @@ const handlers = NextAuth({
       return session;
     },
   },
-  // pages: {
-  //   signIn: '/user/login', // Custom sign-in page
-  //   error: '/auth/error',   // Error page
-  // },
+  pages: {
+    signIn: '/user/login',
+    error: '/auth/error',
+  },
 });
 
 export {handlers as GET, handlers as POST}

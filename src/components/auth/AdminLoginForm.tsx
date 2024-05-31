@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { FormEvent, useState } from "react";
 import { signIn } from "next-auth/react";
 
-export default function LoginForm() {
+export default function AdminLoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -26,7 +26,7 @@ export default function LoginForm() {
       });
 
       if (signInResponse?.ok) {
-        router.push('/products');
+        router.push('/admin/orders');
       } else {
         setError("Invalid login credentials. Please try again.");
       }
@@ -41,7 +41,7 @@ export default function LoginForm() {
       <div className="flex flex-col items-center justify-top px-4 bg-gray-50 text-gray-700">
         <div className="max-w-md w-full">
           <form className="mt-4 space-y-6" onSubmit={handleSubmit}>
-            {/* Inputs and Labels */}
+            <h1 className="text-2xl font-bold text-center">Admin</h1>
             <div className="space-y-2">
               <label htmlFor="email" className="block text-sm font-medium text-gray-700">
                 Email
@@ -74,7 +74,6 @@ export default function LoginForm() {
               />
             </div>
 
-            {/* Additional UI Elements */}
             <div className="flex items-center justify-between">
               <div className="flex items-center">
                 <input

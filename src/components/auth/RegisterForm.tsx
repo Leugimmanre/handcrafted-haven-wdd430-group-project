@@ -35,7 +35,7 @@ export default function RegisterForm() {
         password,
       });
 
-      if (signInResponse!.ok) {
+      if (signInResponse?.ok) {
         router.push('/products');
       } else {
         throw new Error(signInResponse!.error || "Login failed after registration");
@@ -50,7 +50,6 @@ export default function RegisterForm() {
   };
   return (
     <>
-      {/* Show error message if it exists */}
       {error && <div className="p-3 text-red-800 text-sm mb-3">{error}</div>}
       <div className="flex flex-col items-center justify-center px-4 bg-gray-50 text-gray-700">
         <div className="max-w-md w-full min-w-72">

@@ -62,10 +62,10 @@ export default async function ProductsPage({
     <>
       <ToastNotification/>
       <div
-        className="flex flex-col lg:flex-row lg:justify-between gap-5"
+        className="flex flex-col mx-8 lg:flex-row lg:justify-between gap-5"
         >
-        <Heading>Handcrafted Haven Products</Heading>
         <Session/>
+        <Heading>Handcrafted Haven Products</Heading>
         <ProductSearchFormUser/>
       </div>
       <UserProductTable
