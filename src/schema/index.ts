@@ -7,7 +7,7 @@ export const OrderSchema = z.object({
           .min(1, 'There are errors in the order'),
   order: z.array(z.object({
       id: z.number(),
-      name: z.string(),
+      // name: z.string(),
       price: z.number(),
       quantity: z.number(),
       subtotal: z.number()
