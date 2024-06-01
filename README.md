@@ -37,3 +37,6 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 ## Administrator access
 http://localhost:3000/adminLogin
+
+## About
+The Handcrafted Haven project is a web application designed to serve as a virtual marketplace where artisans can display and sell their unique handcrafted products. This approach not only helps artisans reach a broader audience, but also allows consumers to access unique, handmade products, thereby supporting local talent and encouraging more sustainable consumption.
