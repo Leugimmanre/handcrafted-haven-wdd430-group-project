@@ -1,5 +1,6 @@
 import AddProductButtonDetail from "@/components/products/AddProductButtonDetail";
 import ReviewCard from "@/components/products/ReviewCard";
+import ReviewForm from "@/components/products/ReviewForm";
 import { prisma } from "@/lib/prisma";
 import type { Metadata } from "next";
 import Image from "next/image";
@@ -88,11 +89,11 @@ export default async function OrderPage({
                 </div>
                 <div className="w-full lg:w-1/2">
                   <h2 className="text-lg font-bold text-gray-700 mb-1">Reviews</h2>
+                  <ReviewForm productId={parseInt(params.id)} />
+                  <br />
                   {product.reviews.length > 0 ? (
                     product.reviews.map((review) => (
-                      product.reviews.map((review) => (
-                        <ReviewCard key={review.id} review={review} />
-                      ))
+                      <ReviewCard key={review.id} review={review} />
                     ))
                   ) : (
                     <p>No reviews yet.</p>
