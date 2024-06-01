@@ -7,14 +7,13 @@ import { formatCurrency } from "@/utils";
 import { createOrder } from "@/actions/create-order-action";
 import { OrderSchema } from "@/schema";
 import { toast } from 'react-toastify'
-
 import { useSession } from "next-auth/react";
-
 
 
 export default function OrderSummary() {
   const order = useStore((state) => state.order);
-  // const clearOrder = useStore((state) => state.clearOrder)
+  const clearOrder = useStore((state) => state.clearOrder)
+  const { data: session, status } = useSession();
 
   const total = useMemo(
     () => order.reduce((total, item) => total + item.quantity * item.price, 0),
@@ -44,12 +43,9 @@ export default function OrderSummary() {
       });
     }
 
-
     toast.success("Order Placed Correctly");
-    // clearOrder();
+    clearOrder();
   };
-
-  const { data: session, status } = useSession();
 
 
   return (

@@ -6,7 +6,7 @@ import { signOut } from "next-auth/react";
 const adminNavigation = [
   { url: "/admin/orders", text: "Orders", blank: false },
   { url: "/admin/products", text: "Products", blank: false },
-  { url: "/order/ceramics_and_pottery", text: "See Products", blank: true },
+  // { url: "/order/ceramics_and_pottery", text: "See Products", blank: true },
 ];
 const handleLogout = async () => {
   await signOut({ redirect: false });

@@ -4,6 +4,7 @@ import { products } from "./data/products";
 import { artisans} from "./data/artisans";
 import { reviews} from "./data/reviews";
 import { users } from './data/users';
+import { admins } from './data/admins';
 
 const prisma = new PrismaClient();
 
@@ -23,6 +24,9 @@ async function main() {
     });
     await prisma.user.createMany({
       data: users,
+    });
+    await prisma.admin.createMany({
+      data: admins,
     });
   } catch (error) {
     console.log(error);

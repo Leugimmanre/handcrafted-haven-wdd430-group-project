@@ -66,6 +66,14 @@ model User {
   role     String
 }
 
+model Admin {
+  id       Int    @id @default(autoincrement())
+  username String
+  email    String @unique
+  password String
+  role     String
+}
+
 model Review {
   id        Int      @id @default(autoincrement())
   title     String

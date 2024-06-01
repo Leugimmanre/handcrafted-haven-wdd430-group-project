@@ -21,15 +21,7 @@ const handlers = NextAuth({
           placeholder: "******",
         }
       },
-      async authorize(credentials, req) {
-        // const user = {
-        //   id: "1",
-        //   username: "Miguel",
-        //   email: "miguel@miguel.com",
-        //   password: "123456",
-        // };
-        // return user;
-
+      async authorize(credentials) {
         if (!credentials || !credentials.email || !credentials.password) {
           return null;
         }
@@ -48,6 +40,33 @@ const handlers = NextAuth({
         return null;
 
       },
+    }),
+
+    CredentialsProvider({
+      id: "1",
+      name: "admin",
+      credentials: {
+        email: { label: "Email", type: "text", placeholder: "admin@example.com" },
+        password: { label: "Password", type: "password" }
+      },
+      async authorize(credentials) {
+        if (!credentials || !credentials.email || !credentials.password) {
+          return null;
+        }
+
+        try {
+          const admin = await prisma.admin.findUnique({
+            where: { email: credentials.email }
+          });
+
+          if (admin && bcrypt.compareSync(credentials.password, admin.password)) {
+            return { id: admin.id.toString(), name: admin.username, email: admin.email, role: 'admin' };
+          }
+        } catch (error) {
+          console.error("Error in authorization:", error);
+        }
+        return null;
+      }
     }),
   ],
   callbacks: {
