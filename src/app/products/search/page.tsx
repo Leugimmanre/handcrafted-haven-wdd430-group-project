@@ -19,12 +19,12 @@ async function searchProducts(searchTerm: string) {
       ...(isNaN(price)
         ? []
         : [
-            {
-              price: {
-                equals: price,
-              },
+          {
+            price: {
+              equals: price,
             },
-          ]),
+          },
+        ]),
       {
         artisan: {
           name: {

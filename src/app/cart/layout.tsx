@@ -14,13 +14,11 @@ export default function RootLayout({
         <UserNavBar />
       </nav>
       <div className="md:flex">
-        <OrderSidebar />
         <main className="md:flex-1 p-5">
           {children}
         </main>
-        <OrderSummary />
       </div>
-      <ToastNotification/>
+      <ToastNotification />
     </>
   );
 }

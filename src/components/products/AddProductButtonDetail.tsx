@@ -5,16 +5,16 @@ import { useStore } from '@/store';
 import { useRouter } from "next/navigation";
 
 type AddProductButtonProps = {
-    product: Product
+  product: Product
 }
-export default function AddProductButtonDetail({product}: AddProductButtonProps) {
-    const addToOrder = useStore((state) => state.addToOrder);
-    const router = useRouter();
+export default function AddProductButtonDetail({ product }: AddProductButtonProps) {
+  const addToOrder = useStore((state) => state.addToOrder);
+  const router = useRouter();
 
-    const handleAddToCart = () => {
-      addToOrder(product);
-      router.push("/order/ceramics_and_pottery");
-    };
+  const handleAddToCart = () => {
+    addToOrder(product);
+    router.push("/cart");
+  };
   return (
     <button
       type="button"
