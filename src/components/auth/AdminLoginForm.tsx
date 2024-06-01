@@ -74,7 +74,7 @@ export default function AdminLoginForm() {
               />
             </div>
 
-            <div className="flex items-center justify-between">
+            <div className="space-y-2">
               <div className="flex items-center">
                 <input
                   id="remember_me"
@@ -86,9 +86,8 @@ export default function AdminLoginForm() {
                   Remember me
                 </label>
               </div>
-
               <div className="text-sm">
-                <a href="#" className="font-medium text-indigo-600 hover:text-indigo-500"><br />
+                <a href="#" className="font-medium text-indigo-600 hover:text-indigo-500">
                   Forgot your password?
                 </a>
               </div>
@@ -97,7 +96,7 @@ export default function AdminLoginForm() {
             <div className="flex items-center justify-between">
               <div className="text-sm">
                 Don’t have an account?
-              </div>
+              </div><br />
               <Link href="/user/register" className="text-indigo-600 hover:text-indigo-500">
                 Register
               </Link>
