@@ -5,26 +5,26 @@ import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 
 export default function ProductSearchFormUser() {
-    const router = useRouter()
+  const router = useRouter()
 
-    const handleSearchForm = (formData: FormData) => {
-        const data = {
-            search: formData.get('search')
-        }
-        const result = SearchSchema.safeParse(data);
-        if (!result.success) {
-            result.error.issues.forEach(issue => {
-                toast.error(issue.message)
-            })
-            return
-        }
-        router.push(`/products/search?search=${result.data.search}`)
+  const handleSearchForm = (formData: FormData) => {
+    const data = {
+      search: formData.get('search')
     }
+    const result = SearchSchema.safeParse(data);
+    if (!result.success) {
+      result.error.issues.forEach(issue => {
+        toast.error(issue.message)
+      })
+      return
+    }
+    router.push(`/products/search?search=${result.data.search}`)
+  }
 
   return (
     <form
-        className="flex items-center"
-        action={handleSearchForm}
+      className="flex items-center"
+      action={handleSearchForm}
     >
       <input
         type="text"
@@ -36,7 +36,7 @@ export default function ProductSearchFormUser() {
         type="submit"
         className="bg-indigo-600 p-2 uppercase text-white cursor-pointer"
         value={'Search'}
-        />
+      />
     </form>
   );
 }
