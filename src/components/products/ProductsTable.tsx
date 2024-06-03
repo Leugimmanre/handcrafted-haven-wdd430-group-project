@@ -1,11 +1,47 @@
+"use client";
 import { formatCurrency } from "@/utils";
 import Link from "next/link";
 import { ProductWithCategory } from "@/app/admin/products/page";
+import { deleteProduct } from "@/actions/delete-product-action";
+import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
+import Modal from "../modal/Modal";
+import { useState } from "react";
 
 type ProductTableProps = {
-    products: ProductWithCategory
+  products: ProductWithCategory;
 };
+
 export default function ProductTable({ products }: ProductTableProps) {
+  const [isModalOpen, setModalOpen] = useState(false);
+  const [currentProductId, setCurrentProductId] = useState<number | null>(null);
+
+  const openModal = (productId: number) => {
+    setCurrentProductId(productId);
+    setModalOpen(true);
+};
+
+const closeModal = () => {
+    setModalOpen(false);
+};
+
+  const handleDelete = async () => {
+    if (currentProductId === null) return;
+
+    try {
+        const response = await deleteProduct(currentProductId);
+        if (response && response.success) {
+            toast.success("Product deleted successfully");
+            // Add logic to refresh or navigate as needed
+        } else {
+            throw new Error("Failed to delete the product");
+        }
+    } catch (error) {
+        toast.error("An error occurred while deleting the product");
+    } finally {
+        closeModal();
+    }
+};
   return (
     <div className="px-4 sm:px-6 lg:px-8 mt-20">
       <div className="mt-8 flow-root ">
@@ -51,31 +87,37 @@ export default function ProductTable({ products }: ProductTableProps) {
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-200">
-                {products.map(product => (
+                {products.map((product) => (
                   <tr key={product.id}>
                     <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">
-                        {product.name}
+                      {product.name}
                     </td>
                     <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                        {formatCurrency(product.price)}
+                      {formatCurrency(product.price)}
                     </td>
                     <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                        {product.category.name}
+                      {product.category.name}
                     </td>
                     <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                        {product.description}
+                      {product.description}
                     </td>
                     <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                        {product.artisan.name}
+                      {product.artisan.name}
                     </td>
                     <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-0">
-                        <Link
-                            href={`/admin/products/${product.id}/edit`}
-                            className="text-indigo-600 hover:text-indigo-800"
-                        >
+                      <Link
+                        href={`/admin/products/${product.id}/edit`}
+                        className="text-indigo-600 hover:text-indigo-800"
+                      >
                         Edit
                         <span className="sr-only">, {product.name}</span>
-                        </Link>
+                      </Link>
+                      <button
+                        onClick={() => openModal(product.id)}
+                        className="text-red-600 hover:text-red-800 ml-4"
+                      >
+                        Delete
+                      </button>
                     </td>
                   </tr>
                 ))}
@@ -84,6 +126,9 @@ export default function ProductTable({ products }: ProductTableProps) {
           </div>
         </div>
       </div>
+      <Modal isOpen={isModalOpen} onClose={closeModal} onConfirm={handleDelete}>
+        Are you sure you want to delete this product?
+      </Modal>
     </div>
   );
 }

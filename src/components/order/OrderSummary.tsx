@@ -7,11 +7,13 @@ import { formatCurrency } from "@/utils";
 import { createOrder } from "@/actions/create-order-action";
 import { OrderSchema } from "@/schema";
 import { toast } from 'react-toastify'
+import { useSession } from "next-auth/react";
 
 
 export default function OrderSummary() {
   const order = useStore((state) => state.order);
-  // const clearOrder = useStore((state) => state.clearOrder)
+  const clearOrder = useStore((state) => state.clearOrder)
+  const { data: session, status } = useSession();
 
   const total = useMemo(
     () => order.reduce((total, item) => total + item.quantity * item.price, 0),
@@ -21,7 +23,8 @@ export default function OrderSummary() {
 
   const handleCreateOrder = async (formData: FormData) => {
     const data = {
-      name: formData.get("name"),
+      // name: formData.get("name"),
+      name: session?.user?.name,
       total,
       order,
     };
@@ -41,8 +44,9 @@ export default function OrderSummary() {
     }
 
     toast.success("Order Placed Correctly");
-    // clearOrder();
+    clearOrder();
   };
+
 
   return (
     <aside className="lg:h-screen lg:overflow-y-scroll md:w-64 lg:w-96 p-5">
@@ -60,12 +64,11 @@ export default function OrderSummary() {
           </p>
 
           <form action={handleCreateOrder} className="w-full mt-10 space-y-5">
-            <input
-              type="text"
-              placeholder="Write your full name"
-              className="bg-white border border-gray-100 py-2 w-full mx-2"
-              name="name"
-            />
+            <div className="bg-white">
+              <p className="font-bold">User data</p>
+              <p>{`Name: ${session?.user?.name}`}</p>
+              <p>{`Email: ${session?.user?.email}`}</p>
+            </div>
             <input
               type="submit"
               className="py-2 rouded uppercase text-white bg-black w-full text-center cursor-pointer font-bold"

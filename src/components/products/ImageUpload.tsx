@@ -40,7 +40,7 @@ export default function ImageUpload({image} : {image: string | undefined}) {
                                     className='absolute inset-0 w-full h-full'
                                 >
                                     <Image
-                                        fill
+                                        layout='fill'
                                         style={{objectFit: 'contain'}}
                                         src={imageUrl}
                                         alt='Product Image'
@@ -55,7 +55,7 @@ export default function ImageUpload({image} : {image: string | undefined}) {
                             <label>Current Image:</label>
                             <div className='relative w-64 h-64'>
                                 <Image
-                                    fill
+                                    layout='fill'
                                     src={getImagePath(image)}
                                     alt="Product Image"
                                     style={{objectFit: 'contain'}}

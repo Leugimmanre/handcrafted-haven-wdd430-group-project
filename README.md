@@ -34,3 +34,12 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+## Build Command
+npx prisma generate && next build
+
+## Administrator access
+http://localhost:3000/adminLogin
+
+## About
+The Handcrafted Haven project is a web application designed to serve as a virtual marketplace where artisans can display and sell their unique handcrafted products. This approach not only helps artisans reach a broader audience, but also allows consumers to access unique, handmade products, thereby supporting local talent and encouraging more sustainable consumption.

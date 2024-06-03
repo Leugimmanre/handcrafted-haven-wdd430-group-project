@@ -47,7 +47,6 @@ export default function LoginForm() {
       <div className="flex flex-col items-center justify-top px-4 bg-gray-50 text-gray-700">
         <div className="max-w-md w-full">
           <form className="mt-4 space-y-6" onSubmit={handleSubmit}>
-            {/* Inputs and Labels */}
             <div className="space-y-2">
               <label htmlFor="email" className="block text-sm font-medium text-gray-700">
                 Email
